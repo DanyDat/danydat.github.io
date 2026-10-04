@@ -1,26 +1,104 @@
-const isVideo = (src) => /\.(mp4|webm|mov)(\?|$)/i.test(src);
+const ext = (s) => (s.split("?")[0].split(".").pop() || "").toLowerCase();
+const isVideo = (s) => ["mp4", "webm", "mov"].includes(ext(s));
+const isImage = (s) => ["jpg", "jpeg", "png", "gif", "webp", "avif", "svg"].includes(ext(s));
+const isPdf = (s) => ext(s) === "pdf";
 
-function mediaEl(item, controls) {
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text) e.textContent = text;
+  return e;
+}
+
+// Media element. mode: "tile" (autoplay muted preview) or "full" (controls + sound)
+function mediaEl(item, mode) {
   if (isVideo(item.src)) {
     const v = document.createElement("video");
     v.src = item.src;
-    v.muted = true; v.loop = true; v.playsInline = true;
-    if (controls) { v.controls = true; v.autoplay = true; }
-    else { v.autoplay = true; }
+    v.playsInline = true;
+    if (mode === "tile") { v.muted = true; v.loop = true; v.autoplay = true; }
+    else { v.controls = true; }
     return v;
   }
-  const img = document.createElement("img");
-  img.src = item.src;
-  img.alt = item.caption || "";
-  img.loading = "lazy";
-  return img;
+  if (isPdf(item.src)) {
+    const f = document.createElement("iframe");
+    f.src = item.src;
+    f.className = "pdf";
+    f.title = item.caption || "PDF";
+    return f;
+  }
+  if (isImage(item.src)) {
+    const img = document.createElement("img");
+    img.src = item.src;
+    img.alt = item.caption || "";
+    img.loading = "lazy";
+    return img;
+  }
+  const a = el("a", "file", item.caption || item.src.split("/").pop());
+  a.href = item.src;
+  a.target = "_blank";
+  return a;
 }
 
 function openLightbox(item) {
   const lb = document.getElementById("lightbox");
   lb.innerHTML = "";
-  lb.appendChild(mediaEl(item, true));
+  lb.appendChild(mediaEl(item, "full"));
   lb.hidden = false;
+}
+
+function figure(item, mode, clickable) {
+  const fig = el("figure", "item " + mode);
+  fig.appendChild(mediaEl(item, mode));
+  if (item.caption && !isPdf(item.src)) fig.appendChild(el("figcaption", "", item.caption));
+  if (clickable && (isImage(item.src) || isVideo(item.src))) {
+    fig.classList.add("zoom");
+    fig.onclick = () => openLightbox(item);
+  }
+  return fig;
+}
+
+function renderReel(pg, sec) {
+  sec.appendChild(el("h2", "", pg.title));
+  const wrap = el("div", "player");
+  if (pg.video) {
+    const v = document.createElement("video");
+    v.src = pg.video;
+    v.controls = true;       // play / pause / volume / fullscreen
+    v.preload = "metadata";
+    v.playsInline = true;
+    if (pg.poster) v.poster = pg.poster;
+    wrap.appendChild(v);
+  } else if (pg.poster) {
+    const img = document.createElement("img");
+    img.src = pg.poster;
+    wrap.appendChild(img);
+  }
+  sec.appendChild(wrap);
+}
+
+function renderWorks(pg, sec) {
+  sec.appendChild(el("h2", "", pg.title));
+  let lastYear = null;
+  pg.sections.forEach((s) => {
+    if (s.year && s.year !== lastYear) {
+      sec.appendChild(el("div", "year", s.year));
+      lastYear = s.year;
+    }
+    if (s.title) sec.appendChild(el("div", "sec-title", s.title));
+    const grid = el("div", "grid");
+    s.items.forEach((it) => grid.appendChild(figure(it, "tile", true)));
+    sec.appendChild(grid);
+  });
+}
+
+function renderContent(pg, sec) {
+  sec.classList.add("text-block");
+  sec.appendChild(el("h2", "", pg.title));
+  if (pg.text) sec.appendChild(el("p", "body", pg.text));
+  const box = el("div", "media-list");
+  (pg.media || []).forEach((it) => box.appendChild(figure(it, "full", true)));
+  sec.appendChild(box);
 }
 
 async function init() {
@@ -29,56 +107,24 @@ async function init() {
 
   document.title = data.site.name + " - Portfolio";
   document.getElementById("brand").textContent = data.site.name;
-  document.getElementById("tagline").textContent = data.site.tagline;
-  document.getElementById("about-text").textContent = data.site.about;
-  document.getElementById("contact-text").textContent = data.site.contact;
-  document.getElementById("reelTitle").textContent = data.reel.title;
-  document.getElementById("worksTitle").textContent = data.worksTitle;
 
-  const rv = document.getElementById("reelVideo");
-  if (data.reel.video) {
-    rv.poster = data.reel.poster;
-    rv.src = data.reel.video;
-  } else {
-    rv.remove();
-    const hero = document.getElementById("reel");
-    hero.style.background = `url("${data.reel.poster}") center/cover no-repeat`;
-  }
+  const menu = document.getElementById("menu");
+  const main = document.getElementById("top");
+  data.pages.forEach((pg) => {
+    const a = el("a", "", pg.label);
+    a.href = "#" + pg.id;
+    menu.appendChild(a);
 
-  const root = document.getElementById("sections");
-  let lastYear = null;
-  data.sections.forEach((sec) => {
-    if (sec.year && sec.year !== lastYear) {
-      const y = document.createElement("div");
-      y.className = "year";
-      y.textContent = sec.year;
-      root.appendChild(y);
-      lastYear = sec.year;
-    }
-    if (sec.title) {
-      const t = document.createElement("div");
-      t.className = "sec-title";
-      t.textContent = sec.title;
-      root.appendChild(t);
-    }
-    const grid = document.createElement("div");
-    grid.className = "grid";
-    sec.items.forEach((item) => {
-      const fig = document.createElement("figure");
-      fig.className = "item";
-      fig.appendChild(mediaEl(item, false));
-      if (item.caption) {
-        const c = document.createElement("figcaption");
-        c.textContent = item.caption;
-        fig.appendChild(c);
-      }
-      fig.onclick = () => openLightbox(item);
-      grid.appendChild(fig);
-    });
-    root.appendChild(grid);
+    const sec = el("section", "page");
+    sec.id = pg.id;
+    if (pg.type === "reel") renderReel(pg, sec);
+    else if (pg.type === "works") renderWorks(pg, sec);
+    else renderContent(pg, sec);
+    main.appendChild(sec);
   });
 
   document.getElementById("lightbox").onclick = (e) => {
+    if (e.target.tagName === "VIDEO") return; // keep controls usable
     e.currentTarget.hidden = true;
     e.currentTarget.innerHTML = "";
   };
