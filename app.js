@@ -10,8 +10,27 @@ function el(tag, cls, text) {
   return e;
 }
 
+function embedUrl(src) {
+  let m;
+  if ((m = src.match(/instagram\.com\/(reel|p|tv)\/([\w-]+)/))) return `https://www.instagram.com/${m[1]}/${m[2]}/embed`;
+  if ((m = src.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/))) return `https://www.youtube.com/embed/${m[1]}`;
+  if ((m = src.match(/vimeo\.com\/(\d+)/))) return `https://player.vimeo.com/video/${m[1]}`;
+  return null;
+}
+
 // Media element. mode: "tile" (autoplay muted preview) or "full" (controls + sound)
 function mediaEl(item, mode) {
+  const emb = embedUrl(item.src);
+  if (emb) {
+    const f = document.createElement("iframe");
+    f.src = emb;
+    f.className = "embed";
+    f.loading = "lazy";
+    f.allowFullscreen = true;
+    f.allow = "autoplay; encrypted-media; fullscreen";
+    return f;
+  }
+
   if (isVideo(item.src)) {
     const v = document.createElement("video");
     v.src = item.src;

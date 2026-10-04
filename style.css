@@ -37,3 +37,6 @@ a.file { color: #b9a8ff; }
 #lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.9); display: flex; align-items: center; justify-content: center; cursor: zoom-out; }
 #lightbox[hidden] { display: none; }
 #lightbox img, #lightbox video { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+.item.tile iframe.embed { width: 100%; aspect-ratio: 1 / 1; border: 0; border-radius: 10px; background: #1b1b21; }
+.item.full iframe.embed { width: 100%; max-width: 540px; height: 640px; border: 0; border-radius: 10px; }

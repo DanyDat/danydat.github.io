@@ -1,72 +1,168 @@
 {
-  "site": {
-    "name": "DANY DAT",
-    "tagline": "3D Animator"
-  },
-  "pages": [
-    {
-      "id": "reel",
-      "label": "Reel",
-      "type": "reel",
-      "title": "ANIMATION REEL",
-      "video": "",
-      "poster": "media/reel-poster.svg"
-    },
-    {
-      "id": "works",
-      "label": "My works",
-      "type": "works",
-      "title": "PERSONAL WORKS",
-      "sections": [
-        {
-          "year": "2026",
-          "title": "",
-          "items": [
-            { "src": "media/work-01.svg", "caption": "" },
-            { "src": "media/work-02.svg", "caption": "" },
-            { "src": "media/work-03.svg", "caption": "" }
-          ]
-        },
-        {
-          "year": "2025",
-          "title": "The year that I embraced Maya",
-          "items": [
-            { "src": "media/work-04.svg", "caption": "" },
-            { "src": "media/work-05.svg", "caption": "" },
-            { "src": "media/work-06.svg", "caption": "" },
-            { "src": "media/work-07.svg", "caption": "" }
-          ]
-        },
-        {
-          "year": "2025",
-          "title": "Was in love with Zelda",
-          "items": [
-            { "src": "media/work-08.svg", "caption": "" },
-            { "src": "media/work-09.svg", "caption": "" },
-            { "src": "media/work-10.svg", "caption": "" },
-            { "src": "media/work-11.svg", "caption": "" },
-            { "src": "media/work-12.svg", "caption": "" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "about",
-      "label": "About me",
-      "type": "content",
-      "title": "ABOUT ME",
-      "text": "Xin chào! Mình là Dany Dat. Hãy sửa đoạn giới thiệu này trong trang admin.",
-      "media": [
-        { "src": "media/work-13.svg", "caption": "Ảnh của mình" }
-      ]
-    },
-    {
-      "id": "contact",
-      "label": "Contact",
-      "type": "content",
-      "title": "CONTACT",
-      "text": "email@example.com",
-      "media": []
-    }
-  ]
+    "site":  {
+                 "name":  "DANY DAT",
+                 "tagline":  "3D Animator"
+             },
+    "pages":  [
+                  {
+                      "id":  "reel",
+                      "label":  "Reel",
+                      "type":  "reel",
+                      "title":  "DEMO REEL",
+                      "video":  "media/1791134359658-demo_reel_light.mp4",
+                      "poster":  "media/reel-poster.svg"
+                  },
+                  {
+                      "id":  "works",
+                      "label":  "My works",
+                      "type":  "works",
+                      "title":  "PERSONAL WORKS",
+                      "sections":  [
+                                       {
+                                           "year":  "2026",
+                                           "title":  "",
+                                           "items":  [
+                                                         {
+                                                             "src":  "media/1791134584301-jumperkatfinal.mp4",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-01.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-02.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-03.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "https://www.instagram.com/reel/DeEQjQ8KHsP/",
+                                                             "caption":  ""
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "year":  "2025",
+                                           "title":  "",
+                                           "items":  [
+                                                         {
+                                                             "src":  "media/work-04.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-05.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-06.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-07.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-08.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-09.svg",
+                                                             "caption":  ""
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "year":  "2024",
+                                           "title":  "The year that I embraced Maya",
+                                           "items":  [
+                                                         {
+                                                             "src":  "media/work-10.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-11.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-12.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-13.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-14.svg",
+                                                             "caption":  ""
+                                                         }
+                                                     ]
+                                       },
+                                       {
+                                           "year":  "2023",
+                                           "title":  "Was in love with Zelda",
+                                           "items":  [
+                                                         {
+                                                             "src":  "media/work-15.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-16.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-17.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-18.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-19.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-20.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-21.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-22.svg",
+                                                             "caption":  ""
+                                                         },
+                                                         {
+                                                             "src":  "media/work-23.svg",
+                                                             "caption":  ""
+                                                         }
+                                                     ]
+                                       }
+                                   ]
+                  },
+                  {
+                      "id":  "about",
+                      "label":  "About me",
+                      "type":  "content",
+                      "title":  "ABOUT ME",
+                      "text":  "Xin chào! Mình là Dany Dat. Hãy sửa đoạn giới thiệu này trong trang admin.",
+                      "media":  [
+
+                                ]
+                  },
+                  {
+                      "id":  "contact",
+                      "label":  "Contact",
+                      "type":  "content",
+                      "title":  "CONTACT",
+                      "text":  "tranthanhdatcraft@gmail.com",
+                      "media":  [
+
+                                ]
+                  }
+              ]
 }
