@@ -3,49 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Quote</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 { font-size: 2rem; max-width: 700px; margin: 0; }
-    button {
-      padding: 10px 24px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Dany Dat - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="text"></h1>
-  <button onclick="randomText()">Dòng chữ khác</button>
-  <script>
-    const texts = [
-      "Xin chào thế giới!",
-      "Hôm nay là một ngày tuyệt vời.",
-      "Code mỗi ngày, tiến bộ mỗi ngày.",
-      "Không có gì là không thể.",
-      "Hãy bắt đầu từ những điều nhỏ nhất.",
-      "Cười lên nào!"
-    ];
-    function randomText() {
-      document.getElementById("text").textContent =
-        texts[Math.floor(Math.random() * texts.length)];
-    }
-    randomText();
-  </script>
+  <header class="nav">
+    <a class="brand" href="#top" id="brand"></a>
+    <nav>
+      <a href="#reel">Reel</a>
+      <a href="#works">My works</a>
+      <a href="#about">About me</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section id="reel" class="hero">
+      <video id="reelVideo" autoplay muted loop playsinline></video>
+      <div class="hero-text">
+        <h1 id="reelTitle"></h1>
+        <p id="tagline"></p>
+      </div>
+    </section>
+
+    <section id="works">
+      <h2 id="worksTitle"></h2>
+      <div id="sections"></div>
+    </section>
+
+    <section id="about" class="text-block">
+      <h2>ABOUT ME</h2>
+      <p id="about-text"></p>
+    </section>
+
+    <section id="contact" class="text-block">
+      <h2>CONTACT</h2>
+      <p id="contact-text"></p>
+    </section>
+  </main>
+
+  <div id="lightbox" hidden></div>
+  <script src="app.js"></script>
 </body>
 </html>

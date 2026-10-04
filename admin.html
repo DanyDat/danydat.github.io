@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Admin - Portfolio</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, "Segoe UI", Arial, sans-serif; background: #17171c; color: #eee; padding: 20px; padding-bottom: 90px; }
+    h1, h2, h3 { margin: 0 0 10px; }
+    input, textarea, button { font: inherit; }
+    input, textarea { background: #23232b; color: #eee; border: 1px solid #3a3a46; border-radius: 6px; padding: 7px 9px; }
+    textarea { width: 100%; min-height: 70px; }
+    button { background: #5b4bd6; color: #fff; border: 0; border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+    button.sec { background: #34343f; }
+    button.danger { background: #c0392b; }
+    button:disabled { opacity: .5; }
+    .card { background: #1f1f26; border: 1px solid #2e2e38; border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 10px; }
+    .it { background: #272730; border: 2px solid transparent; border-radius: 8px; padding: 6px; cursor: grab; }
+    .it.drag-over { border-color: #8f7bff; }
+    .it.dragging { opacity: .4; }
+    .it img, .it video { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; display: block; }
+    .it input { width: 100%; margin-top: 5px; font-size: .8rem; padding: 4px 6px; }
+    .it .btns { display: flex; gap: 4px; margin-top: 5px; }
+    .it .btns button { flex: 1; padding: 4px; font-size: .8rem; }
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; background: #101014; border-top: 1px solid #2e2e38; padding: 12px 20px; display: flex; gap: 10px; align-items: center; }
+    #status { flex: 1; font-size: .9rem; opacity: .85; }
+    .hint { font-size: .85rem; opacity: .7; }
+    a { color: #b9a8ff; }
+  </style>
+</head>
+<body>
+  <h1>Admin Portfolio</h1>
+
+  <div class="card">
+    <h3>1. Kết nối GitHub</h3>
+    <p class="hint">
+      Dán Personal Access Token (quyền <b>repo</b> hoặc Contents: Read &amp; Write cho repo này).
+      <a href="https://github.com/settings/tokens/new?scopes=repo&description=portfolio-admin" target="_blank">Tạo token</a>.
+      Token chỉ lưu trong trình duyệt của bạn.
+    </p>
+    <div class="row">
+      <input id="repo" size="30" value="DanyDat/danydat.github.io" placeholder="user/repo">
+      <input id="branch" size="8" value="main">
+      <input id="token" type="password" size="40" placeholder="ghp_xxx / github_pat_xxx">
+      <button class="sec" id="saveToken">Lưu token</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Thông tin chung</h3>
+    <div class="row">
+      <input id="siteName" placeholder="Tên"> <input id="tagline" placeholder="Slogan">
+      <input id="reelTitle" placeholder="Tiêu đề reel"> <input id="worksTitle" placeholder="Tiêu đề works">
+    </div>
+    <div class="row">
+      <span class="hint">Reel video:</span> <input id="reelVideo" size="26">
+      <span class="hint">Poster:</span> <input id="reelPoster" size="26">
+      <label class="hint">Đổi video <input type="file" id="reelFile" accept="video/*"></label>
+    </div>
+    <p class="hint">About me</p><textarea id="about"></textarea>
+    <p class="hint">Contact</p><textarea id="contact"></textarea>
+  </div>
+
+  <div id="sections"></div>
+  <button id="addSection">+ Thêm cột mốc / năm mới</button>
+
+  <div class="bar">
+    <span id="status">Đang tải...</span>
+    <button class="sec" id="download">Tải data.json</button>
+    <button id="save">Lưu lên GitHub</button>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
