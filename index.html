@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 { font-size: 2rem; max-width: 700px; margin: 0; }
+    button {
+      padding: 10px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="text"></h1>
+  <button onclick="randomText()">Dòng chữ khác</button>
+  <script>
+    const texts = [
+      "Xin chào thế giới!",
+      "Hôm nay là một ngày tuyệt vời.",
+      "Code mỗi ngày, tiến bộ mỗi ngày.",
+      "Không có gì là không thể.",
+      "Hãy bắt đầu từ những điều nhỏ nhất.",
+      "Cười lên nào!"
+    ];
+    function randomText() {
+      document.getElementById("text").textContent =
+        texts[Math.floor(Math.random() * texts.length)];
+    }
+    randomText();
+  </script>
+</body>
+</html>
