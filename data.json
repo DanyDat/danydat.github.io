@@ -1,12 +1,12 @@
 {
   "site": {
     "name": "DANY DAT",
-    "tagline": "",
+    "tagline": "3D Animator",
     "about": "Xin chÃ o! MÃ¬nh lÃ  Dany Dat. HÃ£y sá»­a Ä‘oáº¡n giá»›i thiá»‡u nÃ y trong trang admin.",
     "contact": "tranthanhdatcraft@gmail.com"
   },
   "reel": {
-    "title": "",
+    "title": "DEMO REEL",
     "video": "media/1791134359658-demo_reel_light.mp4",
     "poster": "media/reel-poster.svg"
   },
@@ -17,6 +17,10 @@
       "title": "",
       "items": [
         {
+          "src": "media/1791134584301-jumperkatfinal.mp4",
+          "caption": ""
+        },
+        {
           "src": "media/work-01.svg",
           "caption": ""
         },
@@ -26,6 +30,10 @@
         },
         {
           "src": "media/work-03.svg",
+          "caption": ""
+        },
+        {
+          "src": "https://www.instagram.com/reel/DeEQjQ8KHsP/",
           "caption": ""
         }
       ]
