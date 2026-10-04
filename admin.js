@@ -20,7 +20,7 @@ $("saveToken").onclick = () => {
 // ---------- load ----------
 async function load() {
   const res = await fetch("data.json?t=" + Date.now());
-  data = await res.json();
+  data = normalize(await res.json());
   $("siteName").value = data.site.name;
   $("siteName").oninput = () => (data.site.name = $("siteName").value);
   $("tagline").value = data.site.tagline;
@@ -290,3 +290,17 @@ $("save").onclick = async () => {
 };
 
 load();
+
+// Accept the old data format (site.about / reel / sections) and convert it to the pages model.
+function normalize(d) {
+  if (d.pages) return d;
+  return {
+    site: { name: d.site.name, tagline: d.site.tagline },
+    pages: [
+      { id: "reel", label: "Reel", type: "reel", title: d.reel.title, video: d.reel.video, poster: d.reel.poster },
+      { id: "works", label: "My works", type: "works", title: d.worksTitle, sections: d.sections },
+      { id: "about", label: "About me", type: "content", title: "ABOUT ME", text: d.site.about || "", media: [] },
+      { id: "contact", label: "Contact", type: "content", title: "CONTACT", text: d.site.contact || "", media: [] }
+    ]
+  };
+}
