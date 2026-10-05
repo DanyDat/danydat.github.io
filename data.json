@@ -184,21 +184,6 @@
         }
       ],
       "socials": []
-    },
-    {
-      "id": "contact",
-      "label": "Contact",
-      "type": "content",
-      "title": "CONTACT",
-      "text": "tranthanhdatcraft@gmail.com",
-      "media": [],
-      "socials": [
-        {
-          "name": "",
-          "url": "",
-          "icon": ""
-        }
-      ]
     }
   ]
 }
