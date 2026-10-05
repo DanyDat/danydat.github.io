@@ -156,7 +156,12 @@
       "type": "content",
       "title": "RESUME",
       "text": "",
-      "media": [],
+      "media": [
+        {
+          "src": "media/1791216002650-dat-s-resume.pdf",
+          "caption": ""
+        }
+      ],
       "socials": []
     },
     {
