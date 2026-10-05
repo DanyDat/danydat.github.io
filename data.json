@@ -148,7 +148,28 @@
       "title": "ABOUT ME",
       "text": "My name is Thanh Dat. But people usually call me Dany.\nI'm fond of learning when it comes to animation and very passionate about it. I fell in love with animating in late high school and has been improving myself ever since.\nI usually put myself in hard situations because I can learn and improve further more through them. I always look for new challenges and opportunity where I can put my creativity into their best uses.",
       "media": [],
-      "socials": []
+      "socials": [
+        {
+          "name": "Facebook",
+          "url": "https://www.facebook.com/danybois2",
+          "icon": "media/1791216244928-facebook_f_logo_-2019-.svg.webp"
+        },
+        {
+          "name": "X",
+          "url": "https://x.com/juztdanylul",
+          "icon": "media/1791216247246-twitter_x_new_logo_x_rounded_icon_256078.webp"
+        },
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/dany-dat-26b4a227b/",
+          "icon": "media/1791216248507-linkedin_icon_circle.svg.webp"
+        },
+        {
+          "name": "Instagram",
+          "url": "https://www.instagram.com/justdanylul/",
+          "icon": "media/1791216249774-instagram-logo-on-circle-style-with-transparent-background-free-png.webp"
+        }
+      ]
     },
     {
       "id": "resume",
