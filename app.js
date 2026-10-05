@@ -126,9 +126,25 @@ function renderContent(pg, sec) {
   sec.classList.add("text-block");
   sec.appendChild(el("h2", "", pg.title));
   if (pg.text) sec.appendChild(el("p", "body", pg.text));
-  if (pg.socials && pg.socials.length) {
+  if (pg.email || (pg.socials && pg.socials.length)) {
     const row = el("div", "socials");
-    pg.socials.forEach((s) => {
+    if (pg.email) {
+      // Phones: open the mail app (mailto). Desktop: open Gmail compose in a new tab.
+      const mobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+      const a = el("a", "social email");
+      a.title = "Gửi email: " + pg.email;
+      a.setAttribute("aria-label", "Send email");
+      if (mobile) {
+        a.href = "mailto:" + pg.email;
+      } else {
+        a.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(pg.email);
+        a.target = "_blank";
+        a.rel = "noopener";
+      }
+      a.innerHTML = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
+      row.appendChild(a);
+    }
+    (pg.socials || []).forEach((s) => {
       if (!s.url) return;
       const a = el("a", "social");
       a.href = s.url;

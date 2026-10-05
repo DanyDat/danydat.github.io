@@ -7,10 +7,17 @@ body { margin: 0; background: #0f0f12; color: #eee; font-family: system-ui, "Seg
   padding: 14px 32px; background: rgba(15, 15, 18, .85); backdrop-filter: blur(8px);
 }
 .brand { font-weight: 800; letter-spacing: 3px; color: #fff; text-decoration: none; }
-.nav nav a { color: #ccc; text-decoration: none; margin-left: 24px; font-size: .95rem; }
+.nav nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.nav nav a { color: #ccc; text-decoration: none; font-size: .95rem; white-space: nowrap; }
 .nav nav a:hover { color: #fff; }
 
-.page { max-width: 1100px; margin: 0 auto; padding: 100px 24px 20px; }
+.page { max-width: 1100px; margin: 0 auto; padding: 100px 24px 20px; scroll-margin-top: 0; }
+@media (max-width: 700px) {
+  .nav { flex-direction: column; align-items: flex-start; padding: 10px 18px; gap: 6px; }
+  .nav nav { gap: 4px 18px; }
+  .nav nav a { font-size: .9rem; }
+  .page { padding-top: 120px; }
+}
 h2 { letter-spacing: 4px; font-size: 1.6rem; margin: 0 0 20px; }
 
 /* Reel: player is 80% width (20% smaller than full) and centered */

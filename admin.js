@@ -271,6 +271,9 @@ function contentEditor(pg, body) {
   ta.value = pg.text || "";
   ta.oninput = () => (pg.text = ta.value);
   body.appendChild(ta);
+  const er = document.createElement("div"); er.className = "row";
+  er.append(label("Email (hiện nút phong bì, bấm vào là soạn thư; để trống = ẩn):"), input(pg.email, "ten@gmail.com", 30, (v) => (pg.email = v.trim())));
+  body.appendChild(er);
   body.appendChild(socialsEditor(pg));
   pg.media = pg.media || [];
   body.appendChild(mediaEditor(pg.media));
