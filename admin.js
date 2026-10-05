@@ -115,15 +115,37 @@ function itemEl(items, ii) {
   const e = document.createElement("div");
   e.className = "it";
   e.draggable = true;
+  const fname = decodeURIComponent((item.src.split("?")[0].split("/").pop() || item.src)).replace(/^\d{10,}-/, "");
+  const fallback = (text) => {
+    const d = document.createElement("div");
+    d.className = "ph";
+    d.textContent = text;
+    return d;
+  };
   let m;
-  if (isVideo(item.src)) {
-    m = document.createElement("video"); m.src = previewSrc(item.src); m.muted = true; m.loop = true; m.autoplay = true;
+  const src = previewSrc(item.src);
+  if (/instagram\.com|youtube\.com|youtu\.be|vimeo\.com/i.test(item.src)) {
+    m = fallback("LINK");
+  } else if (isVideo(item.src)) {
+    m = document.createElement("video");
+    m.src = src + (src.startsWith("blob:") ? "" : "#t=0.1");   // #t shows the first frame as a thumbnail
+    m.muted = true; m.loop = true; m.playsInline = true; m.preload = "metadata";
+    m.onmouseenter = () => m.play().catch(() => {});
+    m.onmouseleave = () => { m.pause(); m.currentTime = 0.1; };
+    m.onerror = () => m.replaceWith(fallback("VIDEO"));
   } else if (isImage(item.src)) {
-    m = document.createElement("img"); m.src = previewSrc(item.src);
+    m = document.createElement("img");
+    m.src = src;
+    m.onerror = () => m.replaceWith(fallback("IMG lỗi"));
   } else {
-    m = document.createElement("div"); m.className = "ph"; m.textContent = ext(item.src).toUpperCase() || "FILE";
+    m = fallback(ext(item.src).toUpperCase() || "FILE");
   }
   e.appendChild(m);
+  const nm = document.createElement("div");
+  nm.className = "fname";
+  nm.textContent = fname;
+  nm.title = fname;
+  e.appendChild(nm);
   e.appendChild(input(item.caption, "Chú thích", 0, (v) => (item.caption = v)));
   const b = document.createElement("div");
   b.className = "btns";
