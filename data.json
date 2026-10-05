@@ -100,44 +100,7 @@
         {
           "year": "2023",
           "title": "Was in love with Zelda",
-          "items": [
-            {
-              "src": "media/work-15.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-16.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-17.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-18.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-19.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-20.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-21.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-22.svg",
-              "caption": ""
-            },
-            {
-              "src": "media/work-23.svg",
-              "caption": ""
-            }
-          ]
+          "items": []
         }
       ]
     },
