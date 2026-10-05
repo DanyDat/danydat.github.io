@@ -84,14 +84,25 @@ function renderReel(pg, sec) {
     const v = document.createElement("video");
     v.src = pg.video;
     v.controls = true;       // play / pause / volume / fullscreen
-    v.preload = "metadata";
+    v.preload = "auto";
     v.playsInline = true;
+    v.loop = true;
     if (pg.poster) v.poster = pg.poster;
     wrap.appendChild(v);
-  } else if (pg.poster) {
-    const img = document.createElement("img");
-    img.src = pg.poster;
-    wrap.appendChild(img);
+    // Browsers only allow autoplay with sound in some cases: try with sound,
+    // otherwise start muted (viewer can unmute with the volume button).
+    const start = () => {
+      v.muted = false;
+      v.play().catch(() => {
+        v.muted = true;
+        v.play().catch(() => {});
+      });
+    };
+    if (v.readyState >= 2) start(); else v.addEventListener("loadeddata", start, { once: true });
+    // Once the viewer interacts with the page, turn the sound on automatically.
+    const unmute = () => { if (v.muted && !v.dataset.userMuted) v.muted = false; };
+    ["click", "keydown", "touchstart"].forEach((ev) => document.addEventListener(ev, unmute, { once: true }));
+    v.addEventListener("volumechange", () => { if (v.muted) v.dataset.userMuted = "1"; });
   }
   sec.appendChild(wrap);
 }
@@ -115,6 +126,23 @@ function renderContent(pg, sec) {
   sec.classList.add("text-block");
   sec.appendChild(el("h2", "", pg.title));
   if (pg.text) sec.appendChild(el("p", "body", pg.text));
+  if (pg.socials && pg.socials.length) {
+    const row = el("div", "socials");
+    pg.socials.forEach((s) => {
+      if (!s.url) return;
+      const a = el("a", "social");
+      a.href = s.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.title = s.name || "";
+      const img = document.createElement("img");
+      img.src = s.icon;
+      img.alt = s.name || "social";
+      a.appendChild(img);
+      row.appendChild(a);
+    });
+    sec.appendChild(row);
+  }
   const box = el("div", "media-list");
   (pg.media || []).forEach((it) => box.appendChild(figure(it, "full", true)));
   sec.appendChild(box);
@@ -126,6 +154,11 @@ async function init() {
 
   document.title = data.site.name + " - Portfolio";
   document.getElementById("brand").textContent = data.site.name;
+  if (data.site.favicon) {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
+    link.href = data.site.favicon;
+  }
 
   const menu = document.getElementById("menu");
   const main = document.getElementById("top");

@@ -25,6 +25,16 @@ async function load() {
   $("siteName").oninput = () => (data.site.name = $("siteName").value);
   $("tagline").value = data.site.tagline;
   $("tagline").oninput = () => (data.site.tagline = $("tagline").value);
+  const showFav = () => { $("faviconPreview").src = data.site.favicon ? previewSrc(data.site.favicon) : ""; };
+  $("favicon").value = data.site.favicon || "";
+  $("favicon").oninput = () => { data.site.favicon = $("favicon").value; showFav(); };
+  $("faviconFile").onchange = async (e) => {
+    if (!e.target.files[0]) return;
+    data.site.favicon = await queueFile(e.target.files[0]);
+    $("favicon").value = data.site.favicon;
+    showFav();
+  };
+  showFav();
   render();
   status("Đã tải. Chỉnh sửa rồi bấm 'Lưu lên GitHub'.");
 }
@@ -195,6 +205,41 @@ function worksEditor(pg, body) {
   });
 }
 
+function socialsEditor(pg) {
+  pg.socials = pg.socials || [];
+  const box = document.createElement("div");
+  box.appendChild(label("Mạng xã hội (icon bạn tự đưa vào, hiển thị tròn dưới nội dung)"));
+  pg.socials.forEach((s, si) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    const img = document.createElement("img");
+    img.style.cssText = "width:40px;height:40px;border-radius:50%;object-fit:cover;background:#444";
+    if (s.icon) img.src = previewSrc(s.icon);
+    const file = document.createElement("input");
+    file.type = "file"; file.accept = "image/*";
+    file.onchange = async () => {
+      if (!file.files[0]) return;
+      s.icon = await queueFile(file.files[0]);
+      img.src = previewSrc(s.icon);
+    };
+    row.append(
+      img,
+      input(s.name, "Tên (vd: Facebook)", 14, (v) => (s.name = v)),
+      input(s.url, "https://link-mạng-xã-hội", 34, (v) => (s.url = v)),
+      label("Icon:"), file,
+      btn("←", "sec", () => moveArr(pg.socials, si, -1)),
+      btn("→", "sec", () => moveArr(pg.socials, si, 1)),
+      btn("✕", "danger", () => { pg.socials.splice(si, 1); render(); })
+    );
+    box.appendChild(row);
+  });
+  box.appendChild(btn("+ Thêm mạng xã hội", "sec", () => {
+    pg.socials.push({ name: "", url: "", icon: "" });
+    render();
+  }));
+  return box;
+}
+
 function contentEditor(pg, body) {
   const r1 = document.createElement("div"); r1.className = "row";
   r1.append(label("Tiêu đề:"), input(pg.title, "", 30, (v) => (pg.title = v)));
@@ -204,6 +249,7 @@ function contentEditor(pg, body) {
   ta.value = pg.text || "";
   ta.oninput = () => (pg.text = ta.value);
   body.appendChild(ta);
+  body.appendChild(socialsEditor(pg));
   pg.media = pg.media || [];
   body.appendChild(mediaEditor(pg.media));
 }
