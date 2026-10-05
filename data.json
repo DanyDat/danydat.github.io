@@ -195,12 +195,16 @@
                       "type":  "content",
                       "title":  "CONTACT",
                       "text":  "Get in touch with me via my social platform or my mail.",
-                      "email":  "tranthanhdatcraft@gmail.com",
                       "media":  [
 
                                 ],
                       "socials":  [
-
+                                      {
+                                          "kind":  "email",
+                                          "name":  "Email",
+                                          "url":  "tranthanhdatcraft@gmail.com",
+                                          "icon":  ""
+                                      }
                                   ]
                   }
               ]

@@ -126,35 +126,43 @@ function renderContent(pg, sec) {
   sec.classList.add("text-block");
   sec.appendChild(el("h2", "", pg.title));
   if (pg.text) sec.appendChild(el("p", "body", pg.text));
-  if (pg.email || (pg.socials && pg.socials.length)) {
+  const links = (pg.socials || []).slice();
+  if (pg.email) links.unshift({ kind: "email", name: "Email", url: pg.email, icon: "" }); // legacy field
+  if (links.length) {
     const row = el("div", "socials");
-    if (pg.email) {
-      // Phones: open the mail app (mailto). Desktop: open Gmail compose in a new tab.
-      const mobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
-      const a = el("a", "social email");
-      a.title = "Gửi email: " + pg.email;
-      a.setAttribute("aria-label", "Send email");
-      if (mobile) {
-        a.href = "mailto:" + pg.email;
+    const mobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+    const envelope = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
+    links.forEach((s) => {
+      if (!s.url) return;
+      const a = el("a", "social");
+      a.title = s.name || "";
+      if (s.kind === "email") {
+        // Phones: open the mail app. Desktop: open Gmail compose in a new tab.
+        const addr = s.url.replace(/^mailto:/i, "");
+        a.classList.add("email");
+        a.setAttribute("aria-label", "Send email");
+        if (mobile) {
+          a.href = "mailto:" + addr;
+        } else {
+          a.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(addr);
+          a.target = "_blank";
+          a.rel = "noopener";
+        }
       } else {
-        a.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(pg.email);
+        a.href = s.url;
         a.target = "_blank";
         a.rel = "noopener";
       }
-      a.innerHTML = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
-      row.appendChild(a);
-    }
-    (pg.socials || []).forEach((s) => {
-      if (!s.url) return;
-      const a = el("a", "social");
-      a.href = s.url;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.title = s.name || "";
-      const img = document.createElement("img");
-      img.src = s.icon;
-      img.alt = s.name || "social";
-      a.appendChild(img);
+      if (s.icon) {
+        const img = document.createElement("img");
+        img.src = s.icon;
+        img.alt = s.name || "social";
+        a.appendChild(img);
+      } else if (s.kind === "email") {
+        a.innerHTML = envelope;
+      } else {
+        a.textContent = (s.name || "?").slice(0, 2);
+      }
       row.appendChild(a);
     });
     sec.appendChild(row);

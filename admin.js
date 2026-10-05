@@ -229,36 +229,62 @@ function worksEditor(pg, body) {
 
 function socialsEditor(pg) {
   pg.socials = pg.socials || [];
+  // migrate the old single "email" field into a normal editable entry
+  if (pg.email) {
+    pg.socials.unshift({ kind: "email", name: "Email", url: pg.email, icon: "" });
+    delete pg.email;
+  }
   const box = document.createElement("div");
-  box.appendChild(label("Mạng xã hội (icon bạn tự đưa vào, hiển thị tròn dưới nội dung)"));
+  box.appendChild(label("Nút liên hệ / mạng xã hội (icon bạn tự đưa vào, hiển thị tròn dưới nội dung)"));
   pg.socials.forEach((s, si) => {
+    const isMail = s.kind === "email";
     const row = document.createElement("div");
     row.className = "row";
     const img = document.createElement("img");
-    img.style.cssText = "width:40px;height:40px;border-radius:50%;object-fit:cover;background:#444";
-    if (s.icon) img.src = previewSrc(s.icon);
+    img.style.cssText = "width:40px;height:40px;border-radius:50%;object-fit:cover;background:#000";
+    const setPreview = () => {
+      if (s.icon) img.src = previewSrc(s.icon);
+      else img.src = isMail
+        ? "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 40 40" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>')
+        : "";
+    };
+    setPreview();
     const file = document.createElement("input");
     file.type = "file"; file.accept = "image/*";
     file.onchange = async () => {
       if (!file.files[0]) return;
       s.icon = await queueFile(file.files[0]);
-      img.src = previewSrc(s.icon);
+      setPreview();
     };
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = isMail ? "Email" : "Link";
     row.append(
-      img,
-      input(s.name, "Tên (vd: Facebook)", 14, (v) => (s.name = v)),
-      input(s.url, "https://link-mạng-xã-hội", 34, (v) => (s.url = v)),
-      label("Icon:"), file,
+      img, badge,
+      input(s.name, isMail ? "Tên (vd: Gmail)" : "Tên (vd: Facebook)", 14, (v) => (s.name = v)),
+      isMail
+        ? input(s.url, "địa-chỉ@gmail.com", 30, (v) => (s.url = v.trim()))
+        : input(s.url, "https://link-mạng-xã-hội", 34, (v) => (s.url = v)),
+      label("Icon (để trống = phong bì mặc định):"), file,
       btn("←", "sec", () => moveArr(pg.socials, si, -1)),
       btn("→", "sec", () => moveArr(pg.socials, si, 1)),
       btn("✕", "danger", () => { pg.socials.splice(si, 1); render(); })
     );
     box.appendChild(row);
   });
-  box.appendChild(btn("+ Thêm mạng xã hội", "sec", () => {
-    pg.socials.push({ name: "", url: "", icon: "" });
-    render();
-  }));
+  const addRow = document.createElement("div");
+  addRow.className = "row";
+  addRow.append(
+    btn("+ Thêm mạng xã hội", "sec", () => {
+      pg.socials.push({ name: "", url: "", icon: "" });
+      render();
+    }),
+    btn("+ Thêm nút email", "sec", () => {
+      pg.socials.push({ kind: "email", name: "Email", url: "", icon: "" });
+      render();
+    })
+  );
+  box.appendChild(addRow);
   return box;
 }
 
@@ -271,9 +297,6 @@ function contentEditor(pg, body) {
   ta.value = pg.text || "";
   ta.oninput = () => (pg.text = ta.value);
   body.appendChild(ta);
-  const er = document.createElement("div"); er.className = "row";
-  er.append(label("Email (hiện nút phong bì, bấm vào là soạn thư; để trống = ẩn):"), input(pg.email, "ten@gmail.com", 30, (v) => (pg.email = v.trim())));
-  body.appendChild(er);
   body.appendChild(socialsEditor(pg));
   pg.media = pg.media || [];
   body.appendChild(mediaEditor(pg.media));
