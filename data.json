@@ -1,211 +1,195 @@
 {
-    "site":  {
-                 "name":  "DANY DAT",
-                 "tagline":  "3D Animator",
-                 "favicon":  "media/1791206381132-_xl4dyxw_400x400.jpg"
-             },
-    "pages":  [
-                  {
-                      "id":  "reel",
-                      "label":  "Reel",
-                      "type":  "reel",
-                      "title":  "DEMO REEL",
-                      "video":  "media/1791134359658-demo_reel_light.mp4",
-                      "poster":  ""
-                  },
-                  {
-                      "id":  "works",
-                      "label":  "My works",
-                      "type":  "works",
-                      "title":  "PERSONAL WORKS",
-                      "sections":  [
-                                       {
-                                           "year":  "2026",
-                                           "title":  "",
-                                           "items":  [
-                                                         {
-                                                             "src":  "media/1791134584301-jumperkatfinal.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791212669170-rude-comp.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791212874261-dancefinal.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213253397-cinecam-song-animation-blk-v034-1-.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213295173-milaholicfinal.mp4",
-                                                             "caption":  ""
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "year":  "2025",
-                                           "title":  "",
-                                           "items":  [
-                                                         {
-                                                             "src":  "media/1791213390723-train-anim-tiger-reaction-datt-v0099-1--1-.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215797908-d76088_4c76b25476f84522bbe73ff12ca75449-mv2.gif",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213560689-refine36.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213652926-reacationfinal.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213716423-walkstopfinal.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791213792374-ratdancereimu.mp4",
-                                                             "caption":  ""
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "year":  "2024",
-                                           "title":  "The year that I embraced Maya",
-                                           "items":  [
-                                                         {
-                                                             "src":  "media/1791214095231-refinelast.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791214214110-weight-refine14.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791214261513-final.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791214289923-push.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215014479-aqohifzp0p1gkglhqkckj98wcwyqzqr63kc5g0kecmecg39spb1qi2ilhkstybow9vbhzix5alocfscfg5k8x6qfc3382lzd7ny.mp4",
-                                                             "caption":  ""
-                                                         }
-                                                     ]
-                                       },
-                                       {
-                                           "year":  "2023",
-                                           "title":  "Was in love with Zelda",
-                                           "items":  [
-                                                         {
-                                                             "src":  "media/1791215438786-jumpscare-spline0000-0071.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215442949-combo.gif",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215447120-runjumpcycle0001-0125.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215482711-d76088_1d37b2ee1efd42a4a82c3448ae416fbe-mv2.gif",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215517474-cuupost0000-0160.mp4",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215550729-d76088_c4cbaa76e0c34da5a901017a93b141ee-mv2.gif",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215602219-d76088_2fda793e76564c22aedaf77051ddb10a-mv2.gif",
-                                                             "caption":  ""
-                                                         },
-                                                         {
-                                                             "src":  "media/1791215603936-d76088_6ad8f883cf5146198ddbb63f0641b151-mv2.gif",
-                                                             "caption":  ""
-                                                         }
-                                                     ]
-                                       }
-                                   ]
-                  },
-                  {
-                      "id":  "about",
-                      "label":  "About me",
-                      "type":  "content",
-                      "title":  "ABOUT ME",
-                      "text":  "My name is Thanh Dat. But people usually call me Dany.\nI\u0027m fond of learning when it comes to animation and very passionate about it. I fell in love with animating in late high school and has been improving myself ever since.\nI usually put myself in hard situations because I can learn and improve further more through them. I always look for new challenges and opportunity where I can put my creativity into their best uses.",
-                      "media":  [
-
-                                ],
-                      "socials":  [
-                                      {
-                                          "name":  "Facebook",
-                                          "url":  "https://www.facebook.com/danybois2",
-                                          "icon":  "media/1791216244928-facebook_f_logo_-2019-.svg.webp"
-                                      },
-                                      {
-                                          "name":  "X",
-                                          "url":  "https://x.com/juztdanylul",
-                                          "icon":  "media/1791216247246-twitter_x_new_logo_x_rounded_icon_256078.webp"
-                                      },
-                                      {
-                                          "name":  "LinkedIn",
-                                          "url":  "https://www.linkedin.com/in/dany-dat-26b4a227b/",
-                                          "icon":  "media/1791216248507-linkedin_icon_circle.svg.webp"
-                                      },
-                                      {
-                                          "name":  "Instagram",
-                                          "url":  "https://www.instagram.com/justdanylul/",
-                                          "icon":  "media/1791216249774-instagram-logo-on-circle-style-with-transparent-background-free-png.webp"
-                                      }
-                                  ]
-                  },
-                  {
-                      "id":  "resume",
-                      "label":  "Resume",
-                      "type":  "content",
-                      "title":  "RESUME",
-                      "text":  "",
-                      "media":  [
-                                    {
-                                        "src":  "media/1791216002650-dat-s-resume.pdf",
-                                        "caption":  ""
-                                    }
-                                ],
-                      "socials":  [
-
-                                  ]
-                  },
-                  {
-                      "id":  "contact",
-                      "label":  "Contact",
-                      "type":  "content",
-                      "title":  "CONTACT",
-                      "text":  "Get in touch with me via my social platform or my mail.",
-                      "media":  [
-
-                                ],
-                      "socials":  [
-                                      {
-                                          "kind":  "email",
-                                          "name":  "Email",
-                                          "url":  "tranthanhdatcraft@gmail.com",
-                                          "icon":  ""
-                                      }
-                                  ]
-                  }
-              ]
+  "site": {
+    "name": "DANY DAT",
+    "tagline": "3D Animator",
+    "favicon": "media/1791206381132-_xl4dyxw_400x400.jpg"
+  },
+  "pages": [
+    {
+      "id": "reel",
+      "label": "Reel",
+      "type": "reel",
+      "title": "DEMO REEL",
+      "video": "media/1791134359658-demo_reel_light.mp4",
+      "poster": ""
+    },
+    {
+      "id": "works",
+      "label": "My works",
+      "type": "works",
+      "title": "PERSONAL WORKS",
+      "sections": [
+        {
+          "year": "2026",
+          "title": "",
+          "items": [
+            {
+              "src": "media/1791134584301-jumperkatfinal.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791212669170-rude-comp.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791212874261-dancefinal.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213253397-cinecam-song-animation-blk-v034-1-.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213295173-milaholicfinal.mp4",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "title": "",
+          "items": [
+            {
+              "src": "media/1791213390723-train-anim-tiger-reaction-datt-v0099-1--1-.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215797908-d76088_4c76b25476f84522bbe73ff12ca75449-mv2.gif",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213560689-refine36.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213652926-reacationfinal.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213716423-walkstopfinal.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791213792374-ratdancereimu.mp4",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "year": "2024",
+          "title": "The year that I embraced Maya",
+          "items": [
+            {
+              "src": "media/1791214095231-refinelast.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791214214110-weight-refine14.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791214261513-final.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791214289923-push.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215014479-aqohifzp0p1gkglhqkckj98wcwyqzqr63kc5g0kecmecg39spb1qi2ilhkstybow9vbhzix5alocfscfg5k8x6qfc3382lzd7ny.mp4",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "year": "2023",
+          "title": "Was in love with Zelda",
+          "items": [
+            {
+              "src": "media/1791215438786-jumpscare-spline0000-0071.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215442949-combo.gif",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215447120-runjumpcycle0001-0125.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215482711-d76088_1d37b2ee1efd42a4a82c3448ae416fbe-mv2.gif",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215517474-cuupost0000-0160.mp4",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215550729-d76088_c4cbaa76e0c34da5a901017a93b141ee-mv2.gif",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215602219-d76088_2fda793e76564c22aedaf77051ddb10a-mv2.gif",
+              "caption": ""
+            },
+            {
+              "src": "media/1791215603936-d76088_6ad8f883cf5146198ddbb63f0641b151-mv2.gif",
+              "caption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "label": "About me",
+      "type": "content",
+      "title": "ABOUT ME",
+      "text": "My name is Thanh Dat. But people usually call me Dany.\nI'm fond of learning when it comes to animation and very passionate about it. I fell in love with animating in late high school and has been improving myself ever since.\nI usually put myself in hard situations because I can learn and improve further more through them. I always look for new challenges and opportunity where I can put my creativity into their best uses.",
+      "media": [],
+      "socials": [
+        {
+          "name": "Facebook",
+          "url": "https://www.facebook.com/danybois2",
+          "icon": "media/1791216244928-facebook_f_logo_-2019-.svg.webp"
+        },
+        {
+          "name": "X",
+          "url": "https://x.com/juztdanylul",
+          "icon": "media/1791216247246-twitter_x_new_logo_x_rounded_icon_256078.webp"
+        },
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/dany-dat-26b4a227b/",
+          "icon": "media/1791216248507-linkedin_icon_circle.svg.webp"
+        },
+        {
+          "name": "Instagram",
+          "url": "https://www.instagram.com/justdanylul/",
+          "icon": "media/1791216249774-instagram-logo-on-circle-style-with-transparent-background-free-png.webp"
+        },
+        {
+          "kind": "email",
+          "name": "Email",
+          "url": "tranthanhdatcraft@gmail.com",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "id": "resume",
+      "label": "Resume",
+      "type": "content",
+      "title": "RESUME",
+      "text": "",
+      "media": [
+        {
+          "src": "media/1791216002650-dat-s-resume.pdf",
+          "caption": ""
+        }
+      ],
+      "socials": []
+    }
+  ]
 }
